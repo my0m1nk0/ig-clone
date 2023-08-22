@@ -1,0 +1,15 @@
+::ng-deep.friends-list{
+    .p-orderlist-controls{
+        display: none !important;
+    }
+    .p-orderlist{
+        height: 100% !important;
+        
+    }
+    .p-orderlist-list-container{
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+}

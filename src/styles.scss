@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeflex/primeflex.css";
+@import "primeicons/primeicons.css";
+body {
+  font-family: var(--font-family);
+  margin: 0px;
+  padding: 0px;
+}
+
+.date-input {
+  span.p-calendar {
+    width: 100% !important;
+  }
+}
+.p-datepicker-touch-ui,
+.p-calendar .p-datepicker-touch-ui {
+  min-width: 30vw !important;
+}
+// .nav-icon {
+//   span.pi {
+//     font-size: 1.3rem !important;
+//   }
+// }

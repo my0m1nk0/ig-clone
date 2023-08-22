@@ -1,0 +1,39 @@
+.layout-grid {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  grid-template-columns: auto 1fr auto;
+  height: 100vh;
+}
+.header {
+  background-color: navy;
+  grid-row: 1 / 2;
+  grid-column: 1 / 4;
+//   height: 100px;
+}
+.friend-list {
+  background-color: aqua;
+  width: 250px;
+  grid-row: 2 / 5;
+  grid-column: 1 / 2;
+}
+.story-list {
+  background-color: red;
+  grid-row: 2 / 3;
+  grid-column: 2 / 4;
+  height: 100px;
+}
+.post-list {
+  background-color: green;
+  grid-row: 3 / 5;
+}
+.post-create {
+  background-color: blue;
+  grid-column: 3 / 4;
+  width: 200px;
+  height: 100px;
+  grid-row: 3 / 4;
+}
+.ads-list {
+  background-color: yellow;
+  grid-column: 3 / 4;
+}
