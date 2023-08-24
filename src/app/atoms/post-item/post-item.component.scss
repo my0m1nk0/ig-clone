@@ -1,0 +1,16 @@
+::ng-deep .post {
+  .p-card-header {
+    padding: 1.25rem;
+    padding-bottom: 0px;
+  }
+  .p-card-content,
+  .p-card-footer {
+    padding: 0px;
+  }
+
+  .post-react {
+    i {
+        cursor: pointer;
+    }
+  }
+}

@@ -1,1 +1,33 @@
-<p>post-item works!</p>
+<p-card [style]="{ width: '360px' }" styleClass="post">
+    <ng-template pTemplate="header">
+        <app-user-profile-icon></app-user-profile-icon>
+    </ng-template>
+    <p-carousel [value]="postImages" [numVisible]="1" [numScroll]="1" [showIndicators]="false" [showNavigators]="false"
+        [circular]="true">
+        <ng-template let-product pTemplate="item">
+            <div class="product-item">
+                <div class="product-item-content">
+                    <div class="">
+                        <img src="https://primefaces.org/cdn/primeng/images/demo/product/game-controller.jpg"
+                            class="product-image w-full shadow-2" />
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+    </p-carousel>
+    <ng-template pTemplate="footer">
+        <div class="flex justify-content-between mt-2 post-react">
+            <div class="react-post flex gap-2">
+                <i class="pi pi-heart"></i>
+                <i class="pi pi-comment"></i>
+                <i class="pi pi-send"></i>
+            </div>
+            <div class="save-post">
+                <i class="pi pi-bookmark"></i>
+            </div>
+        </div>
+        <p class="text-xs" appSeeMore>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis officia quas, voluptatum, soluta perferendis nulla eligendi odit dolorem quae saepe dignissimos amet illum possimus facilis deleniti ea. Fugit, assumenda? Laborum?</p>
+
+    </ng-template>
+</p-card>

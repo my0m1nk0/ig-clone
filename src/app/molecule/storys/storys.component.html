@@ -1,1 +1,11 @@
-<p>storys works!</p>
+<div class="flex m-3 gap-2">
+    <ng-container *ngFor="let item of storys">
+        <div class="item flex flex-column align-content-center ">
+            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="story-img"
+                size="large" shape="circle" class="text-center" ></p-avatar>
+            <label for="" class="profile-text text-xs">
+                {{item.fullname}}
+            </label>
+        </div>
+    </ng-container>
+</div>

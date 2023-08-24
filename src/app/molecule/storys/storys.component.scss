@@ -1,0 +1,12 @@
+.item {
+    width: 60px;
+    white-space: nowrap;
+}
+.profile-text{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+}
+::ng-deep .story-img{
+    border: 5px rgb(97, 192, 230,0.8) solid;
+}

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./post-item.component.scss']
 })
 export class PostItemComponent {
-
+  postImages: any[] = [{},{},{}]
 }
