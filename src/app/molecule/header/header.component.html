@@ -19,7 +19,11 @@
                     class="nav-icon"></p-button>
             </li>
             <li>
-                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" size="large" shape="circle"></p-avatar>
+                <p-avatar *ngIf="user?.profile_img;else profileIcon" image="{{user?.profile_img}}"
+                    shape="circle"></p-avatar>
+                <ng-template #profileIcon>
+                    <p-avatar icon="pi pi-user"  shape="circle"></p-avatar>
+                </ng-template>
             </li>
         </ul>
 

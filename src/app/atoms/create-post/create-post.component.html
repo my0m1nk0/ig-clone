@@ -1,1 +1,10 @@
-<p>create-post works!</p>
+<div class="flex gap-2 p-3 align-items-center" id="createPost">
+    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle"></p-avatar>
+    <div class="flex-auto">
+        <div class="p-inputgroup">
+            <input pInputText placeholder="What's on your mind?" class="p-inputtext-sm" />
+           <button type="button" (click)="openCreate()" pButton icon="pi pi-camera" class="p-button-warn p-button-sm p-button-outlined"></button>
+        </div>
+    </div>
+
+</div>

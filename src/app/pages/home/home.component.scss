@@ -30,13 +30,17 @@
   }
 }
 .post-create {
-  background-color: blue;
   grid-column: 3 / 4;
-  width: 200px;
-  height: 100px;
+  // height: 100px;
   grid-row: 3 / 4;
+  
 }
 .ads-list {
-  background-color: yellow;
   grid-column: 3 / 4;
+  display: flex;
+  app-ads-list {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
 }

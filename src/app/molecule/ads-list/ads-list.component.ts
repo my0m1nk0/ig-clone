@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./ads-list.component.scss']
 })
 export class AdsListComponent {
+  items: any[] = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
 }

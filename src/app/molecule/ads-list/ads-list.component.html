@@ -1,1 +1,11 @@
-<p>ads-list works!</p>
+<p-virtualScroller [value]="items" class="border-1 surface-border w-full border-round" scrollHeight="100%" [itemSize]="60" id="virtualScroller">
+    <ng-template pTemplate="item" let-item>
+        <div class="flex align-items-center p-2 h-full" >
+            <!-- <p-card class="w-full p-0" styleClass="p-0"> -->
+                <div class="custom-card">
+                    <app-user-profile-icon></app-user-profile-icon>
+                </div>
+            <!-- </p-card> -->
+        </div>
+    </ng-template>
+</p-virtualScroller>

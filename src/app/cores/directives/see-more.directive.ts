@@ -19,7 +19,6 @@ export class SeeMoreDirective implements OnInit {
     readMore.href = "javascript:void(0)";
     readMore.innerText = 'see more'
     // readMore.onclick = this.showAllText
-    console.log(this);
     readMore.addEventListener('click', (e) => {
       e.preventDefault()
       this.showAllText()
@@ -28,7 +27,6 @@ export class SeeMoreDirective implements OnInit {
   }
 
   showAllText() {
-    console.log(this);
     const readMore = document.createElement("p")
     readMore.innerText = this.defaultText
     this.eleRef.nativeElement.innerHTML = ''

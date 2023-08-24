@@ -14,6 +14,7 @@ const COMPONENTS = [
   HeaderComponent,
   PostsComponent,
   StorysComponent,
+  AdsListComponent
 ]
 
 @NgModule({

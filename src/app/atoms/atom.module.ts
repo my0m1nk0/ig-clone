@@ -4,11 +4,15 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { SharePrimeModule } from '../cores/prime-shared.module';
 import { PostItemComponent } from './post-item/post-item.component';
 import { UserProfileIconComponent } from './user-profile-icon/user-profile-icon.component';
+import { MoleculeModule } from '../molecule/molecule.module';
+import { PostCreateFormComponent } from './post-create-form/post-create-form.component';
 
 const COMPONETS = [
   CreatePostComponent,
   PostItemComponent,
-  UserProfileIconComponent
+  UserProfileIconComponent,
+  CreatePostComponent,
+  PostCreateFormComponent
 ]
 
 @NgModule({
@@ -16,7 +20,7 @@ const COMPONETS = [
   exports: COMPONETS,
   imports: [
     CommonModule,
-    SharePrimeModule
+    SharePrimeModule,
   ]
 })
 export class AtomModule { }
