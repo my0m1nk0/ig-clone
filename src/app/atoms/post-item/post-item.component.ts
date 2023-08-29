@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { PostService } from 'src/app/cores/services/post-service.ts.service';
 
 @Component({
   selector: 'app-post-item',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./post-item.component.scss']
 })
 export class PostItemComponent {
-  postImages: any[] = [{},{},{}]
+  @Input()
+  postObj:any
+  
 }

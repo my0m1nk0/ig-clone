@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PostService } from 'src/app/cores/services/post-service.ts.service';
 
 @Component({
   selector: 'app-posts',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent {
-  posts = [ {},{},{},{},{},{} ]
+  posts:any;
+
+  constructor(private postService:PostService){
+    this.postService.getPost()
+    this.postService.post.subscribe((res)=>{
+      this.posts =res   
+    })
+  }
 }

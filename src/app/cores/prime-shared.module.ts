@@ -12,6 +12,7 @@ import { SeeMoreDirective } from './directives/see-more.directive';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ImageModule } from 'primeng/image';
+import { GalleriaModule } from 'primeng/galleria';
 
 const modules: any[] = [
   InputTextModule,
@@ -26,6 +27,7 @@ const modules: any[] = [
   VirtualScrollerModule,
   InputTextareaModule,
   ImageModule,
+  GalleriaModule
 ]
 @NgModule({
   imports: modules,

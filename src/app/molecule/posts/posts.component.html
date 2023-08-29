@@ -1,5 +1,5 @@
 <div class="scorller-posts m-3 gap-4">
-    <ng-container *ngFor="let item of posts">
-        <app-post-item></app-post-item>
+    <ng-container *ngFor="let item of posts; let i as index">
+        <app-post-item [postObj]="item"></app-post-item>
     </ng-container>
 </div>

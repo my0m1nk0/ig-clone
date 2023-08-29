@@ -1,17 +1,25 @@
 import { Injectable, inject } from '@angular/core';
-import { CollectionReference, DocumentData, Firestore, addDoc, collection } from '@angular/fire/firestore';
-import { Observable, from } from 'rxjs';
+import { CollectionReference, DocumentData, Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
+import { BehaviorSubject, Observable, from } from 'rxjs';
 import { PostI } from 'src/app/models/post';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
+  post=new BehaviorSubject<PostI[]>([]);
   postsCollection : CollectionReference<DocumentData>;
   firestore: Firestore = inject(Firestore);
   constructor() { this.postsCollection = collection(this.firestore,'posts'); }
 
   addNewPost(postForm: PostI) {
     return from(addDoc(this.postsCollection,postForm));
+  }
+
+  getPost(){
+    collectionData(this.postsCollection).subscribe((res)=>{
+       this.post.next(res as PostI[])
+
+    })
   }
 }
