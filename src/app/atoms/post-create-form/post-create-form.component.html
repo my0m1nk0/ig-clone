@@ -1,5 +1,5 @@
-<form [formGroup]="postForm" (ngSubmit)="uploadPost()">
-    <div id="postForm">
+<form [formGroup]="postForm" (ngSubmit)="uploadPost()" >
+    <div id="postForm" >
         <textarea rows="5" cols="30" pInputTextarea formControlName="text" [autoResize]="false" class="w-full"></textarea>
         <div class="flex mt-3 flex-wrap gap-2">
             <div class="img-upload custom-card flex align-items-center justify-content-center" (click)="uploadImg()">
@@ -18,3 +18,4 @@
         </div>
     </div>
 </form>
+
