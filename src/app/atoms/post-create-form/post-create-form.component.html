@@ -1,4 +1,4 @@
-<form [formGroup]="postForm">
+<form [formGroup]="postForm" (ngSubmit)="uploadPost()">
     <div id="postForm">
         <textarea rows="5" cols="30" pInputTextarea formControlName="text" [autoResize]="false" class="w-full"></textarea>
         <div class="flex mt-3 flex-wrap gap-2">
@@ -14,7 +14,7 @@
         </div>
         <div class="text-right">
             <p-button label="Cancel" styleClass="p-button-outlined p-button-secondary mr-2"></p-button>
-            <p-button label="Post" styleClass="p-button-outlined" [disabled]="postForm.invalid"></p-button>
+            <p-button label="Post" styleClass="p-button-outlined" [disabled]="postForm.invalid" type="submit"></p-button>
         </div>
     </div>
 </form>

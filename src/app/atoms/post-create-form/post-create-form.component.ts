@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, NgZone, ChangeDetectorRef, OnInit } f
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OptionValidator } from 'src/app/cores/custom-validator/option.validator';
 import { getFileReader } from 'src/app/cores/services/file-reader';
+import { PostService } from 'src/app/cores/services/post-service.ts.service';
 
 @Component({
   selector: 'app-post-create-form',
@@ -12,7 +13,7 @@ export class PostCreateFormComponent implements OnInit {
   imgArray: string[] = []
   @ViewChild("imageInput", { read: ElementRef }) imageInput: ElementRef
   postForm: FormGroup
-  constructor(private ngZone: NgZone, private cdf: ChangeDetectorRef) { }
+  constructor(private ngZone: NgZone, private cdf: ChangeDetectorRef, private postService : PostService) { }
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
@@ -41,6 +42,14 @@ export class PostCreateFormComponent implements OnInit {
         }
       }
     }
+  }
+
+  uploadPost(){
+    // console.log(this.postForm);
+    this.postService.addNewPost({...this.postForm.value}).subscribe((res : any)=>{
+      this.postForm.reset();
+      console.log(res);
+    })
   }
 
 }
