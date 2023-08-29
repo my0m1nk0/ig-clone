@@ -6,6 +6,7 @@ import { PostItemComponent } from './post-item/post-item.component';
 import { UserProfileIconComponent } from './user-profile-icon/user-profile-icon.component';
 import { MoleculeModule } from '../molecule/molecule.module';
 import { PostCreateFormComponent } from './post-create-form/post-create-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const COMPONETS = [
   CreatePostComponent,
@@ -21,6 +22,8 @@ const COMPONETS = [
   imports: [
     CommonModule,
     SharePrimeModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AtomModule { }

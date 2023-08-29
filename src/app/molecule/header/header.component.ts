@@ -9,13 +9,14 @@ import { User } from 'src/app/models/user';
 })
 export class HeaderComponent implements OnInit {
   user: User | null
+  fontSize: number = 10
   constructor(private userService: FireStoreUserService) {
 
   }
 
   ngOnInit(): void {
     this.userService.loginUser.subscribe((userInfo) => {
-        this.user = userInfo
+      this.user = userInfo
     })
   }
 }
