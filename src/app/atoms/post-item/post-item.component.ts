@@ -7,6 +7,7 @@ import { PostI } from 'src/app/models/post';
   styleUrls: ['./post-item.component.scss']
 })
 export class PostItemComponent {
-  // postImages: any[] = [{},{},{}]
-  @Input() postContent: any;
+  slideConfig = { slidesToShow: 1, slidesToScroll: 1,autoplay: false,arrows: false };
+  @Input() postContent: PostI;
+
 }

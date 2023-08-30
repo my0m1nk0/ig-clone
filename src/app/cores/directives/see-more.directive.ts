@@ -14,16 +14,18 @@ export class SeeMoreDirective implements OnInit {
   ngOnInit(): void {
     // this.eleRef.nativeElement.removeEventListener('click', this.seeMoreListener)
     this.defaultText = this.eleRef.nativeElement.innerText
-    this.eleRef.nativeElement.innerText = this.defaultText.substring(0, 20) + "  "
-    const readMore = document.createElement("a")
-    readMore.href = "javascript:void(0)";
-    readMore.innerText = 'see more'
-    // readMore.onclick = this.showAllText
-    readMore.addEventListener('click', (e) => {
-      e.preventDefault()
-      this.showAllText()
-    })
-    this.eleRef.nativeElement.appendChild(readMore)
+    if (this.defaultText.length > 20) {
+      this.eleRef.nativeElement.innerText = this.defaultText.substring(0, 20) + "  "
+      const readMore = document.createElement("a")
+      readMore.href = "javascript:void(0)";
+      readMore.innerText = 'see more'
+      // readMore.onclick = this.showAllText
+      readMore.addEventListener('click', (e) => {
+        e.preventDefault()
+        this.showAllText()
+      })
+      this.eleRef.nativeElement.appendChild(readMore)
+    }
   }
 
   showAllText() {
