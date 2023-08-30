@@ -2,13 +2,13 @@
     <ng-template pTemplate="header">
         <app-user-profile-icon></app-user-profile-icon>
     </ng-template>
-    <p-carousel [value]="postImages" [numVisible]="1" [numScroll]="1" [showIndicators]="false" [showNavigators]="false"
+    <p-carousel [value]="postContent.imgs" [numVisible]="1" [numScroll]="1" [showIndicators]="true" [showNavigators]="false"
         [circular]="true">
-        <ng-template let-product pTemplate="item">
+        <ng-template let-product pTemplate="item" >
             <div class="product-item">
                 <div class="product-item-content">
-                    <div class="">
-                        <img src="https://primefaces.org/cdn/primeng/images/demo/product/game-controller.jpg"
+                    <div class="" >
+                        <img src={{product}}
                             class="product-image w-full shadow-2" />
                     </div>
                 </div>
@@ -27,7 +27,6 @@
                 <i class="pi pi-bookmark"></i>
             </div>
         </div>
-        <p class="text-xs" appSeeMore>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis officia quas, voluptatum, soluta perferendis nulla eligendi odit dolorem quae saepe dignissimos amet illum possimus facilis deleniti ea. Fugit, assumenda? Laborum?</p>
-
+        <p class="text-xs" appSeeMore [innerText]="postContent.text"></p>
     </ng-template>
 </p-card>
