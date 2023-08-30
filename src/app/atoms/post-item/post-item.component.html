@@ -2,20 +2,17 @@
     <ng-template pTemplate="header">
         <app-user-profile-icon></app-user-profile-icon>
     </ng-template>
-    <p-carousel [value]="postContent.imgs" [numVisible]="1" [numScroll]="1" [showIndicators]="true" [showNavigators]="false"
-        [circular]="true">
-        <ng-template let-product pTemplate="item" >
-            <div class="product-item">
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let slide of postContent.imgs" class="slide">
+            <div class="product-item w-full">
                 <div class="product-item-content">
-                    <div class="" >
-                        <img src={{product}}
-                            class="product-image w-full shadow-2" />
+                    <div class="">
+                        <img src={{slide}} class="product-image w-full shadow-2" />
                     </div>
                 </div>
             </div>
-        </ng-template>
-
-    </p-carousel>
+        </div>
+    </ngx-slick-carousel>
     <ng-template pTemplate="footer">
         <div class="flex justify-content-between mt-2 post-react">
             <div class="react-post flex gap-2">
