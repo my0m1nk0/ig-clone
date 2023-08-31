@@ -12,6 +12,7 @@ import { SeeMoreDirective } from './directives/see-more.directive';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ImageModule } from 'primeng/image';
+import { CheckReactPipe } from './pipes/check-react.pipe';
 
 const modules: any[] = [
   InputTextModule,
@@ -29,9 +30,10 @@ const modules: any[] = [
 ]
 @NgModule({
   imports: modules,
-  exports: [...modules, SeeMoreDirective],
+  exports: [...modules, SeeMoreDirective,CheckReactPipe],
   declarations: [
-    SeeMoreDirective
+    SeeMoreDirective,
+    CheckReactPipe,
   ],
 })
 export class SharePrimeModule {

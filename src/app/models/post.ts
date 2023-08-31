@@ -1,4 +1,5 @@
 export interface PostI {
+    id: string,
     text?: string,
     user_id: string,
     comment?: PostComment[],

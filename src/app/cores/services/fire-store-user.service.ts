@@ -1,7 +1,8 @@
 import { Injectable, inject } from '@angular/core';
-import { CollectionReference, DocumentData, Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
+import { CollectionReference, DocumentData, Firestore, QueryDocumentSnapshot, addDoc, collection, collectionData } from '@angular/fire/firestore';
 import { Observable, from, of, BehaviorSubject } from 'rxjs';
 import { User } from '../../models/user'
+import { dataConverter } from '../data-converter';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +17,7 @@ export class FireStoreUserService {
   }
 
   getUser() {
-    this.userCollection = collection(this.firestore, 'user');
+    this.userCollection = collection(this.firestore, 'user').withConverter(dataConverter);
     collectionData(this.userCollection).subscribe((res) => {
       this.item$.next(res as User[])
     })
@@ -46,5 +47,5 @@ export class FireStoreUserService {
     return isExist
   }
 
-
+ 
 }
