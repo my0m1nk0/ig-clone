@@ -1,6 +1,6 @@
 <p-card [style]="{ width: '360px' }" styleClass="post">
     <ng-template pTemplate="header">
-        <app-user-profile-icon></app-user-profile-icon>
+        <app-user-profile-icon [fullname]="postContent.user?.name || ''" [imgUrl]="postContent.user?.profile_img || ''"></app-user-profile-icon>
     </ng-template>
     <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
         <div ngxSlickItem *ngFor="let slide of postContent.imgs" class="slide">
@@ -16,12 +16,14 @@
     <ng-template pTemplate="footer">
         <div class="flex justify-content-between mt-2 post-react">
             <div class="react-post flex gap-2">
-                <i class="pi pi-heart"></i>
+                <i class="pi {{ (postContent.like | checkReact) ? 'pi-heart-fill text-red-500' : 'pi-heart'}}"
+                    (click)="toggleReaction(type.LIKE)"></i>
                 <i class="pi pi-comment"></i>
-                <i class="pi pi-send"></i>
+                <i class="pi pi-send" (click)="toggleReaction(type.SHARE)"></i>
             </div>
             <div class="save-post">
-                <i class="pi pi-bookmark"></i>
+                <i class="pi {{ (postContent.fav | checkReact) ? 'pi-bookmark-fill text-yellow-500' : 'pi-bookmark'}}"
+                    (click)="toggleReaction(type.FAV)"></i>
             </div>
         </div>
         <p class="text-xs" appSeeMore [innerText]="postContent.text"></p>

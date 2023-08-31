@@ -14,7 +14,7 @@ const COMPONETS = [
   PostItemComponent,
   UserProfileIconComponent,
   CreatePostComponent,
-  PostCreateFormComponent
+  PostCreateFormComponent,
 ]
 
 @NgModule({

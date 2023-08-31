@@ -1,4 +1,7 @@
+import { User } from "./user"
+
 export interface PostI {
+    id: string,
     text?: string,
     user_id: string,
     comment?: PostComment[],
@@ -6,6 +9,7 @@ export interface PostI {
     fav?: string[],
     imgs: string[],
     share?: string[],
+    user?: User,
 }
 export interface PostComment {
     user_id: string,
