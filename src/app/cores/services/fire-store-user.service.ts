@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { CollectionReference, DocumentData, Firestore, QueryDocumentSnapshot, addDoc, collection, collectionData } from '@angular/fire/firestore';
-import { Observable, from, of, BehaviorSubject } from 'rxjs';
+import { CollectionReference, DocumentData, Firestore, QueryDocumentSnapshot, addDoc, collection, collectionData, doc, getDoc } from '@angular/fire/firestore';
+import { Observable, from, of, BehaviorSubject, map } from 'rxjs';
 import { User } from '../../models/user'
 import { dataConverter } from '../data-converter';
 @Injectable({
@@ -47,5 +47,13 @@ export class FireStoreUserService {
     return isExist
   }
 
- 
+  getUserById(id: string): Observable<any> {
+    console.log(id);
+
+    if (typeof id == 'string')
+      return from(getDoc(doc(this.firestore, 'user', id)))
+    return of(null)
+  }
+
+
 }

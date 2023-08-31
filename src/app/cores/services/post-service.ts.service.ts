@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { CollectionReference, DocumentData, Firestore, addDoc, collection, collectionData, doc, updateDoc } from '@angular/fire/firestore';
-import { BehaviorSubject, Observable, from } from 'rxjs';
+import { CollectionReference, DocumentData, Firestore, QueryDocumentSnapshot, addDoc, collection, collectionData, doc, updateDoc } from '@angular/fire/firestore';
+import { BehaviorSubject, Observable, concatMap, forkJoin, from, lastValueFrom, map, mergeMap, toArray } from 'rxjs';
 import { PostI } from 'src/app/models/post';
 import { dataConverter } from '../data-converter';
 import { FireStoreUserService } from './fire-store-user.service';
@@ -11,19 +11,22 @@ import { FireStoreUserService } from './fire-store-user.service';
 export class PostService {
   postsCollection: CollectionReference<DocumentData>;
   firestore: Firestore = inject(Firestore);
-  constructor(private userService: FireStoreUserService) { this.postsCollection = collection(this.firestore, 'posts').withConverter(dataConverter);; }
+  constructor(private userService: FireStoreUserService) { this.postsCollection = collection(this.firestore, 'posts').withConverter(dataConverter); }
 
   addNewPost(postForm: PostI) {
-    return from(addDoc(this.postsCollection, postForm));
+    return from(addDoc(this.postsCollection, { ...postForm, user_id: this.userService.loginUser.getValue()?.id }));
   }
 
   getPosts() {
-    return collectionData(this.postsCollection) as Observable<PostI[]>;
+    return collectionData(this.postsCollection).pipe(mergeMap((res) => {
+      return from(res).pipe(concatMap((post: any) => {
+        return this.userService.getUserById(post.user_id).pipe(map((user) => ({ ...post, user: user?.data() })))
+      }), toArray())
+    }))
   }
 
   likePosts(post: PostI) {
     const isLike = post.like?.findIndex((userId) => userId == this.userService.loginUser.getValue()?.id)
-    console.log(isLike, "updated");
     if (typeof isLike === 'number') {
       if (isLike >= 0) {
         post.like?.splice(isLike, 1)
@@ -67,7 +70,6 @@ export class PostService {
 
   favPosts(post: PostI) {
     const isFav = post.fav?.findIndex((userId) => userId == this.userService.loginUser.getValue()?.id)
-    console.log(isFav, "updated");
     if (typeof isFav === 'number') {
       if (isFav >= 0) {
         post.fav?.splice(isFav, 1)

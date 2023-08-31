@@ -1,4 +1,5 @@
 import { DocumentData, QueryDocumentSnapshot } from "@angular/fire/firestore";
+import { Firestore } from '@angular/fire/firestore';
 
 export const dataConverter = {
   toFirestore: (data: any) => {
