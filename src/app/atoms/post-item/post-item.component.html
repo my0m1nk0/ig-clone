@@ -3,14 +3,12 @@
         <app-user-profile-icon [fullname]="postContent.user?.name || ''"
             [imgUrl]="postContent.user?.profile_img || ''"></app-user-profile-icon>
     </ng-template>
-    <p-carousel [value]="postObj.imgs"[numVisible]="1" [numScroll]="1" [showIndicators]="true" [showNavigators]="false"
-        [circular]="true">
-        <ng-template let-product pTemplate="item">
-            <div class="product-item">
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let slide of postContent.imgs" class="slide">
+            <div class="product-item w-full">
                 <div class="product-item-content">
                     <div class="">
-                        <img [src]="product"
-                            class="product-image w-full shadow-2 h-25rem" />
+                        <img src={{slide}} class="product-image w-full shadow-2" />
                     </div>
                 </div>
             </div>
@@ -29,7 +27,7 @@
                     (click)="toggleReaction(type.FAV ,$event)"></i>
             </div>
         </div>
-        <p class="text-xs" appSeeMore [innerText]="postObj.text"></p>
-
+        <p class="" appSeeMore [innerText]="postContent.text"></p>
+        <ng-content></ng-content>
     </ng-template>
 </p-card>
