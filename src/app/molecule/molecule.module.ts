@@ -7,6 +7,7 @@ import { PostsComponent } from './posts/posts.component';
 import { StorysComponent } from './storys/storys.component';
 import { SharePrimeModule } from '../cores/prime-shared.module';
 import { AtomModule } from '../atoms/atom.module';
+import { PostCommentComponent } from './post-comment/post-comment.component';
 
 const COMPONENTS = [
   AdsListComponent,
@@ -14,7 +15,8 @@ const COMPONENTS = [
   HeaderComponent,
   PostsComponent,
   StorysComponent,
-  AdsListComponent
+  AdsListComponent,
+  PostCommentComponent
 ]
 
 @NgModule({

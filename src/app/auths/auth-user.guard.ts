@@ -18,13 +18,7 @@ import { FireStoreUserService } from '../cores/services/fire-store-user.service'
 export const authUserGuard: CanActivateFn = (route, state) => {
   const userService = inject(FireStoreUserService)
   const router = inject(Router)
-  
-  const user = localStorage.getItem('user');
-  if(user){
-    const userLogined = JSON.parse(user);
-    userService.loginUser.next(userLogined);
-    return true;
-  }
+  if (userService.loginUser.getValue()) return true
   router.navigateByUrl('user/login')
   return false;
 };

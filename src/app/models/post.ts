@@ -14,5 +14,6 @@ export interface PostI {
 export interface PostComment {
     user_id: string,
     comment: string
+    img?: string
     sub_commnet?: PostComment[]
 }

@@ -8,6 +8,7 @@ import { MoleculeModule } from '../molecule/molecule.module';
 import { PostCreateFormComponent } from './post-create-form/post-create-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { CommentItemComponent } from './comment-item/comment-item.component';
 
 const COMPONETS = [
   CreatePostComponent,
@@ -15,6 +16,7 @@ const COMPONETS = [
   UserProfileIconComponent,
   CreatePostComponent,
   PostCreateFormComponent,
+  CommentItemComponent
 ]
 
 @NgModule({

@@ -1,4 +1,5 @@
 export const environment = {
+    stage: 'development',
     firebaseConfig: {
         apiKey: "AIzaSyCul2O5FNJSnz_hRYcY33FOGAxD-9M7l-8",
         authDomain: "instragam-clone-29470.firebaseapp.com",
