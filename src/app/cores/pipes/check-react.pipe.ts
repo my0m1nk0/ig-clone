@@ -16,5 +16,4 @@ export class CheckReactPipe implements PipeTransform {
     }
     return false
   }
-
 }

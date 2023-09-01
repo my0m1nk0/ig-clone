@@ -17,13 +17,13 @@
         <div class="flex justify-content-between mt-2 post-react">
             <div class="react-post flex gap-2">
                 <i class="pi {{ (postContent.like | checkReact) ? 'pi-heart-fill text-red-500' : 'pi-heart'}}"
-                    (click)="toggleReaction(type.LIKE)"></i>
+                    (click)="toggleReaction(type.LIKE ,$event)"></i>
                 <i class="pi pi-comment"></i>
-                <i class="pi pi-send" (click)="toggleReaction(type.SHARE)"></i>
+                <i class="pi pi-send" (click)="toggleReaction(type.SHARE ,$event)"></i>
             </div>
             <div class="save-post">
                 <i class="pi {{ (postContent.fav | checkReact) ? 'pi-bookmark-fill text-yellow-500' : 'pi-bookmark'}}"
-                    (click)="toggleReaction(type.FAV)"></i>
+                    (click)="toggleReaction(type.FAV ,$event)"></i>
             </div>
         </div>
         <p class="text-xs" appSeeMore [innerText]="postContent.text"></p>

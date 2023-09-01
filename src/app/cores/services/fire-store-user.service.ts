@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { CollectionReference, DocumentData, Firestore, QueryDocumentSnapshot, addDoc, collection, collectionData, doc, getDoc } from '@angular/fire/firestore';
 import { Observable, from, of, BehaviorSubject, map } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from '../../models/user'
 import { dataConverter } from '../data-converter';
 @Injectable({
@@ -11,9 +12,10 @@ export class FireStoreUserService {
   firestore: Firestore = inject(Firestore);
   userCollection: CollectionReference<DocumentData>
   loginUser = new BehaviorSubject<User | null>(null);
+  auth: AngularFireAuth
   constructor() {
     console.log("loginUser", this.loginUser);
-
+    this.getUser();
   }
 
   getUser() {
@@ -37,9 +39,11 @@ export class FireStoreUserService {
   login(email: string, password: string) {
     const user = this.item$.getValue().find((user) => user.password === password && user.email === email)
     if (user) {
-      this.loginUser.next(user)
+      this.loginUser.next(user);
+      localStorage.setItem("user", JSON.stringify(user));
     }
-    return of(user)
+    return of(user);
+
   }
 
   checkEmail(userInfo: User) {
@@ -49,11 +53,8 @@ export class FireStoreUserService {
 
   getUserById(id: string): Observable<any> {
     console.log(id);
-
     if (typeof id == 'string')
       return from(getDoc(doc(this.firestore, 'user', id)))
     return of(null)
   }
-
-
 }
