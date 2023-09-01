@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FireStoreUserService } from './cores/services/fire-store-user.service';
-import { APP_CONFIG } from './models/app-config';
+import { PostService } from './cores/services/post-service.ts.service';
+
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,10 @@ import { APP_CONFIG } from './models/app-config';
 export class AppComponent implements OnInit {
   title = 'instragram-clone';
 
-  constructor(private fireStoreService: FireStoreUserService, @Inject(APP_CONFIG) private appConfig: any) { }
+  constructor(private fireStoreService: FireStoreUserService,private postService:PostService) { }
 
   ngOnInit(): void {
+    
     this.fireStoreService.getUser()
     this.fireStoreService.item$.subscribe((result) => {
       console.log("result", result);
