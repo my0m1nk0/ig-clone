@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { PostService } from 'src/app/cores/services/post-service.ts.service';
 import { PostI } from 'src/app/models/post';
 import { POSTACTION } from 'src/app/models/post-action-type';
+import {user} from "@angular/fire/auth";
 
 @Component({
   selector: 'app-post-item',
@@ -32,4 +33,5 @@ export class PostItemComponent implements OnInit {
     this.addComment.emit(true)
   }
 
+  protected readonly user = user;
 }

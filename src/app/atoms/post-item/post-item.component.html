@@ -1,8 +1,6 @@
 <p-card [style]="{ width: '360px' }" styleClass="post text-xs">
-    <ng-template pTemplate="header">
-        <app-user-profile-icon [fullname]="postContent.user?.name || ''"
+        <app-user-profile-icon  [fullname]="postContent.user?.name || ''"
             [imgUrl]="postContent.user?.profile_img || ''"></app-user-profile-icon>
-    </ng-template>
     <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
         <div ngxSlickItem *ngFor="let slide of postContent.imgs" class="slide">
             <div class="product-item w-full">
