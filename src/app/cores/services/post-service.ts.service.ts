@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { CollectionReference, DocumentData, Firestore, QueryDocumentSnapshot, addDoc, collection, collectionData, doc, updateDoc } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable, concatMap, forkJoin, from, lastValueFrom, map, mergeMap, toArray } from 'rxjs';
-import { PostI } from 'src/app/models/post';
+import {PostComment, PostI } from 'src/app/models/post';
 import { dataConverter } from '../data-converter';
 import { FireStoreUserService } from './fire-store-user.service';
 
@@ -84,6 +84,20 @@ export class PostService {
       post.fav?.push(userId)
     }
     return this.updatePosts(post)
+  }
+  postComment(post:PostI,comment:string){
+    const userId = this.userService.loginUser.getValue()?.id;
+    const commentObj :PostComment={
+      user_id : userId ? userId.toString() : '',
+      comment:comment
+    }
+
+    post.comment = post.comment ?? [];
+    post.comment?.push(commentObj);
+
+    return this.updatePosts(post)
+
+
   }
 
 }
