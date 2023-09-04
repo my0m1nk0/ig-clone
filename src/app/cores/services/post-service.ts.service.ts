@@ -90,14 +90,12 @@ export class PostService {
     const commentObj :PostComment={
       user_id : userId ? userId.toString() : '',
       comment:comment
-    }
+    };
 
     post.comment = post.comment ?? [];
     post.comment?.push(commentObj);
 
-    return this.updatePosts(post)
-
-
+    return this.updatePosts(post);
   }
 
 }

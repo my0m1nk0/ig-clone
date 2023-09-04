@@ -8,6 +8,7 @@ import { StorysComponent } from './storys/storys.component';
 import { SharePrimeModule } from '../cores/prime-shared.module';
 import { AtomModule } from '../atoms/atom.module';
 import { PostCommentComponent } from './post-comment/post-comment.component';
+import {FormsModule} from "@angular/forms";
 
 const COMPONENTS = [
   AdsListComponent,
@@ -26,6 +27,7 @@ const COMPONENTS = [
     CommonModule,
     AtomModule,
     SharePrimeModule,
+    FormsModule
   ]
 })
 export class MoleculeModule { }

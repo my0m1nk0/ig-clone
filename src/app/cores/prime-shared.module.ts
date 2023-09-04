@@ -13,6 +13,7 @@ import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ImageModule } from 'primeng/image';
 import { CheckReactPipe } from './pipes/check-react.pipe';
+import {FormsModule} from "@angular/forms";
 const modules: any[] = [
   InputTextModule,
   ButtonModule,
