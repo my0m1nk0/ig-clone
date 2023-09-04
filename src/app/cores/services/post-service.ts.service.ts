@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { CollectionReference, DocumentData, Firestore, QueryDocumentSnapshot, addDoc, collection, collectionData, doc, updateDoc } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable, concatMap, forkJoin, from, lastValueFrom, map, mergeMap, toArray } from 'rxjs';
-import { PostI } from 'src/app/models/post';
+import { PostComment, PostI } from 'src/app/models/post';
 import { dataConverter } from '../data-converter';
 import { FireStoreUserService } from './fire-store-user.service';
 
@@ -19,8 +19,21 @@ export class PostService {
 
   getPosts() {
     return collectionData(this.postsCollection).pipe(mergeMap((res) => {
-      return from(res).pipe(concatMap((post: any) => {
-        return this.userService.getUserById(post.user_id).pipe(map((user) => ({ ...post, user: user?.data() })))
+      return from(res).pipe(mergeMap((post: any) => {
+        post.comment = post.comment ?? []
+        return forkJoin([this.userService.getUserById(post.user_id), ...post.comment.map((comment: any) => {
+          return this.userService.getUserById(comment.user_id).pipe(map((cmtUser) => ({ ...comment, user: cmtUser?.data() })))
+        })]).pipe(map((result: any) => {
+          post['user'] = result[0].data()
+          result.splice(0, 1)
+          post['comment'] = result
+          return post
+        }))
+        // .pipe(mergeMap((user) => {
+        //   post[user] = user
+        //   return 
+        // }))
+        // pipe(map((user) => ({ ...post, user: user?.data() })))
       }), toArray())
     }))
   }
@@ -83,6 +96,19 @@ export class PostService {
       post.fav = post.fav ?? []
       post.fav?.push(userId)
     }
+    return this.updatePosts(post)
+  }
+
+  commentPost(post: PostI, text: string, img: string) {
+    const userId = this.userService.loginUser.getValue()?.id
+    const newComment: PostComment = {
+      user_id: userId || '',
+      comment: text || '',
+      img: img || '',
+      user: this.userService.loginUser.getValue() || undefined
+    }
+    post.comment = post.comment ?? []
+    post.comment.push(newComment)
     return this.updatePosts(post)
   }
 

@@ -1,14 +1,15 @@
 <div class="flex gap-2 text-xs">
-    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-        styleClass="profile-img" shape="circle" class="text-center"></p-avatar>
+    <p-avatar [image]="postComment.user.profile_img" styleClass="profile-img" shape="circle"
+        class="text-center"></p-avatar>
     <div class="comment-item flex-auto">
         <label for="" class="profile-text text-sm">
-            Testing User
+            {{postComment.user.name}}
         </label>
         <div class="text-xs" appSeeMore>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus exercitationem impedit
-            natus ex iusto laborum eveniet numquam autem accusamus quasi. Voluptates illo itaque officiis!
-            Beatae, hic dolores? Quae, placeat omnis?
+            {{postComment.comment}}
+        </div>
+        <div *ngIf="postComment.img" class="img-upload custom-card flex align-items-center justify-content-center">
+            <p-image [src]="postComment.img" alt="Image" width="100%"></p-image>
         </div>
     </div>
 

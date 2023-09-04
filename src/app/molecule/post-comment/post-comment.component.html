@@ -1,12 +1,18 @@
 <app-post-item [postContent]="postContent" (addComment)="toggleComment()">
     <ng-container *ngIf="showComment">
         <hr>
+        <div class="img-upload custom-card flex align-items-center justify-content-center" *ngIf="commentImg">
+            <p-button icon="pi pi-times" styleClass="p-button-text " class="remove-btn"
+                (click)="removeImg()"></p-button>
+            <p-image [src]="commentImg" alt="Image" width="100%"></p-image>
+        </div>
         <div class="comment-area p-2 border-solid border-1 border-round-sm border-500 mb-2">
             <textarea class="w-full border-none p-0 cmt-input" pInputTextarea placeholder="Add Comment"
-                style="resize: none;"></textarea>
+                style="resize: none;" [(ngModel)]="commentText"></textarea>
             <div class="flex justify-content-between">
-                <i class="pi pi-camera"></i>
-                <label>post</label>
+                <input type="file" style="display: none;" #imageInput (change)="handleInput($event)">
+                <i class="pi pi-camera" (click)="openCamera()"></i>
+                <label (click)="savePost()" *ngIf="commentImg ||commentText ">post</label>
             </div>
         </div>
         <div class="text-right mb-2">
@@ -15,7 +21,7 @@
             </a>
         </div>
         <div class="comment-list">
-            <app-comment-item></app-comment-item>
+            <app-comment-item *ngFor="let comment of postContent.comment" [postComment]="comment"></app-comment-item>
         </div>
     </ng-container>
 </app-post-item>

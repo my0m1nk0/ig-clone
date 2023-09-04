@@ -16,4 +16,5 @@ export interface PostComment {
     comment: string
     img?: string
     sub_commnet?: PostComment[]
+    user?: User
 }

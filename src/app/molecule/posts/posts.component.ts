@@ -19,7 +19,7 @@ export class PostsComponent implements OnInit {
     this.postService.getPosts().subscribe(
       (posts: PostI[]) => {
         this.posts = posts;
-        // console.log(this.posts);
+        console.log(this.posts,"p[ost");
       }
     );
   }
