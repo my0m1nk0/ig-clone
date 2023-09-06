@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { PostItemComponent } from '../post-item/post-item.component';
 import { PostCreateFormComponent } from '../post-create-form/post-create-form.component';
 import { MessageService } from 'primeng/api';
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { PostService } from 'src/app/cores/services/post-service.ts.service';
+import { PostServiceTsService } from 'src/app/cores/services/post-service.ts.service';
 import { PostI } from 'src/app/models/post';
 import { POSTACTION } from 'src/app/models/post-action-type';
 
@@ -14,7 +14,7 @@ export class PostItemComponent implements OnInit {
   @Input() postContent: PostI;
   @Output() addComment = new EventEmitter<boolean>()
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostServiceTsService) { }
 
   ngOnInit() {
     // this.toggleReaction(this.type: POSTACTION,event: Event);

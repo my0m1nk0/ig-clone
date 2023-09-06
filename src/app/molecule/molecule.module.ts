@@ -8,7 +8,9 @@ import { StorysComponent } from './storys/storys.component';
 import { SharePrimeModule } from '../cores/prime-shared.module';
 import { AtomModule } from '../atoms/atom.module';
 import { PostCommentComponent } from './post-comment/post-comment.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserModule} from "@angular/platform-browser";
+
 
 const COMPONENTS = [
   AdsListComponent,
@@ -17,17 +19,19 @@ const COMPONENTS = [
   PostsComponent,
   StorysComponent,
   AdsListComponent,
-  PostCommentComponent
+  PostCommentComponent,
 ]
 
 @NgModule({
   declarations: COMPONENTS,
   exports: COMPONENTS,
-  imports: [
-    CommonModule,
-    AtomModule,
-    SharePrimeModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        AtomModule,
+        SharePrimeModule,
+        FormsModule,
+        ReactiveFormsModule,
+
+    ]
 })
 export class MoleculeModule { }

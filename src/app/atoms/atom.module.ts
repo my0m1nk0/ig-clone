@@ -4,11 +4,12 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { SharePrimeModule } from '../cores/prime-shared.module';
 import { PostItemComponent } from './post-item/post-item.component';
 import { UserProfileIconComponent } from './user-profile-icon/user-profile-icon.component';
-import { MoleculeModule } from '../molecule/molecule.module';
 import { PostCreateFormComponent } from './post-create-form/post-create-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CommentItemComponent } from './comment-item/comment-item.component';
+import {StoryCreateComponent} from "./story-create/story-create.component";
+
 
 const COMPONETS = [
   CreatePostComponent,
@@ -16,7 +17,9 @@ const COMPONETS = [
   UserProfileIconComponent,
   CreatePostComponent,
   PostCreateFormComponent,
-  CommentItemComponent
+  CommentItemComponent,
+  StoryCreateComponent,
+
 ]
 
 @NgModule({

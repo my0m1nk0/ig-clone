@@ -13,6 +13,7 @@ import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ImageModule } from 'primeng/image';
 import { CheckReactPipe } from './pipes/check-react.pipe';
+import { GalleriaModule } from 'primeng/galleria';
 const modules: any[] = [
   InputTextModule,
   ButtonModule,
@@ -26,6 +27,7 @@ const modules: any[] = [
   VirtualScrollerModule,
   InputTextareaModule,
   ImageModule,
+  GalleriaModule
 ]
 @NgModule({
   imports: modules,

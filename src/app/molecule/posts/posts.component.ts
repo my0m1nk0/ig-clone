@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from 'src/app/cores/services/post-service.ts.service';
+import { PostServiceTsService } from 'src/app/cores/services/post-service.ts.service';
 import { PostI } from 'src/app/models/post';
 
 @Component({
@@ -10,7 +10,7 @@ import { PostI } from 'src/app/models/post';
 export class PostsComponent implements OnInit {
   posts: PostI[] = [];
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostServiceTsService) {}
 
   ngOnInit() {
     this.fetchPosts();
@@ -19,7 +19,7 @@ export class PostsComponent implements OnInit {
     this.postService.getPosts().subscribe(
       (posts: PostI[]) => {
         this.posts = posts;
-        console.log(this.posts,"p[ost");
+        console.log(this.posts,"post");
       }
     );
   }

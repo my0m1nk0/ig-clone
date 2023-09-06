@@ -1,7 +1,13 @@
 <div class="flex align-items-center gap-2">
-    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="profile-img"
-      shape="circle" class="text-center"></p-avatar>
-    <label for="" class="profile-text text-sm">
-        {{fullname}}
-    </label>
+  <p-avatar
+    *ngIf="imgUrl; else defaultProfile"
+    image="{{imgUrl}}" styleClass="profile-img"
+    shape="circle" class="text-center"></p-avatar>
+  <label  class="profile-text text-sm">
+    {{fullname}}
+  </label>
+  <ng-template #defaultProfile>
+    <p-avatar icon="pi pi-user" styleClass="profile-img"
+              shape="circle" class="text-center"></p-avatar>
+  </ng-template>
 </div>

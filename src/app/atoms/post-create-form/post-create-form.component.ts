@@ -4,7 +4,7 @@ import { MessageService } from 'primeng/api';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { OptionValidator } from 'src/app/cores/custom-validator/option.validator';
 import { getFileReader } from 'src/app/cores/services/file-reader';
-import { PostService } from 'src/app/cores/services/post-service.ts.service';
+import { PostServiceTsService } from 'src/app/cores/services/post-service.ts.service';
 
 @Component({
   selector: 'app-post-create-form',
@@ -15,7 +15,7 @@ export class PostCreateFormComponent implements OnInit {
   imgArray: string[] = []
   @ViewChild("imageInput", { read: ElementRef }) imageInput: ElementRef
   postForm: FormGroup
-  constructor(private ngZone: NgZone, private cdf: ChangeDetectorRef, private postService: PostService,  public ref: DynamicDialogRef) { }
+  constructor(private ngZone: NgZone, private cdf: ChangeDetectorRef, private postService: PostServiceTsService, public ref: DynamicDialogRef) { }
 
   ngOnInit(): void {
     this.postForm = new FormGroup({

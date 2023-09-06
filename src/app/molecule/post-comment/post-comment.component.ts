@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { getFileReader } from 'src/app/cores/services/file-reader';
-import { PostService } from 'src/app/cores/services/post-service.ts.service';
+import { PostServiceTsService } from 'src/app/cores/services/post-service.ts.service';
 
 @Component({
   selector: 'app-post-comment',
@@ -14,7 +14,7 @@ export class PostCommentComponent implements OnInit {
   commentText: string
   commentImg: string
 
-  constructor(private cdf: ChangeDetectorRef, private postService: PostService) { }
+  constructor(private cdf: ChangeDetectorRef, private postService: PostServiceTsService) { }
 
   toggleComment() {
     this.showComment = !this.showComment
@@ -22,7 +22,7 @@ export class PostCommentComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("init Post",this.postContent.id);
-    
+
   }
 
   handleInput(event: any) {
