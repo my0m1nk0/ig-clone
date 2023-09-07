@@ -6,6 +6,7 @@ import { SharePrimeModule } from 'src/app/cores/prime-shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { MoleculeModule } from 'src/app/molecule/molecule.module';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -15,13 +16,18 @@ const routes: Routes = [
   {
     path: 'login',
     component: UserLoginComponent
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent
   }
 ]
 
 @NgModule({
   declarations: [
     UserRegisterComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    UserProfileComponent
   ],
   imports: [
     CommonModule,

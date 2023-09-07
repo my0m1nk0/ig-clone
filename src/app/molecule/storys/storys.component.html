@@ -1,54 +1,43 @@
 <div class="flex m-3 gap-2">
-    <div class="item flex flex-column align-content-center" (click)="openStoryCreate()">
-           <p-avatar  icon="pi pi-image" styleClass="story-img"
-                     size="large" shape="circle" [style]="{ 'background-color': '#ed82a4', color: '#ffffff' }" >
+  <div class="item flex flex-column align-content-center" (click)="openStoryCreate()">
+    <p-avatar icon="pi pi-image" styleClass="story-img" size="large" shape="circle"
+      [style]="{ 'background-color': '#ed82a4', color: '#ffffff' }">
 
-           </p-avatar>
-             <label class="profile-text text-xs">
-            Add Story
-        </label>
+    </p-avatar>
+    <label class="profile-text text-xs">
+      Add Story
+    </label>
+  </div>
+
+  <div class="item flex flex-column align-content-center" *ngFor="let story of stories">
+    <div (click)="showStoryImages(story)">
+      <p-avatar *ngIf="story.user?.profile_img; else defaultProfile" [image]="story.user?.profile_img"
+        styleClass="story-img" size="large" shape="circle" class="text-center"></p-avatar>
+      <p class="profile-text text-xs">
+        {{story.user?.name}}
+      </p>
+      <ng-template #defaultProfile>
+        <p-avatar icon="pi pi-user" styleClass="story-img" size="large" shape="circle" class="text-center"></p-avatar>
+      </ng-template>
     </div>
 
-        <div class="item flex flex-column align-content-center" *ngFor="let story of stories" >
-          <div (click)="showStoryImages(story)">
-            <p-avatar *ngIf="story.user?.profile_img; else defaultProfile" [image]="story.user?.profile_img"  styleClass="story-img"
-                      size="large" shape="circle" class="text-center" ></p-avatar>
-            <p class="profile-text text-xs">
-              {{story.user?.name}}
-            </p>
-            <ng-template #defaultProfile>
-              <p-avatar icon="pi pi-user" styleClass="story-img" size="large"
-                        shape="circle" class="text-center"></p-avatar>
-            </ng-template>
-          </div>
-
-        </div>
+  </div>
 
 
 </div>
-<p-galleria     [value]="stories"
-                [(visible)]="displayBasic"
-                [responsiveOptions]="responsiveOptions"
-                [showItemNavigatorsOnHover]="true"
-                [numVisible]="7"
-                [circular]="true"
-                [fullScreen]="true"
-                [showItemNavigators]="true"
-                [showThumbnails]="false"
-
-
-                >
+<p-galleria [value]="stories" [(visible)]="displayBasic" [responsiveOptions]="responsiveOptions"
+  [showItemNavigatorsOnHover]="true" [numVisible]="7" [circular]="true" [fullScreen]="true" [showItemNavigators]="true"
+  [showThumbnails]="false">
   <ng-template pTemplate="item" let-item>
-    <img  [src]="currentStoryImages == undefined ? currentStoryImages : item.imgs" style="width: 100%;height: 500px; display: block;" />
+    <img [src]="currentStoryImages == undefined ? currentStoryImages : item.imgs"
+      style="width: 100%;height: 500px; display: block;" />
   </ng-template>
 
   <ng-template pTemplate="caption" let-item>
-      <app-user-profile-icon [fullname]="item.user?.name || ''"
-                             [imgUrl]="item.user?.profile_img || ''"></app-user-profile-icon>
+    <app-user-profile-icon [fullname]="item.user?.name || ''"
+      [imgUrl]="item.user?.profile_img || ''"></app-user-profile-icon>
 
     <h4 style="margin-bottom: .5rem; color: #ffffff;">{{ item.text }}</h4>
   </ng-template>
 </p-galleria>
 <p-toast></p-toast>
-
-

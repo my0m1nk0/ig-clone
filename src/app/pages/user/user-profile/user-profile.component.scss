@@ -1,0 +1,18 @@
+::ng-deep #userProfile {
+  .p-avatar.p-avatar-xl {
+    width: 8rem;
+    height: 8rem;
+  }
+  .p-card-content,
+  .p-card-footer {
+    padding: 0px;
+  }
+  .p-card-body{
+    position: relative;
+  }
+  .setting-icon{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+}

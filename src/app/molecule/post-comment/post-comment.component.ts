@@ -13,7 +13,7 @@ export class PostCommentComponent implements OnInit {
   showComment: boolean = false
   commentText: string
   commentImg: string
-
+  removeCount: number = 0
   constructor(private cdf: ChangeDetectorRef, private postService: PostServiceTsService) { }
 
   toggleComment() {
@@ -21,8 +21,7 @@ export class PostCommentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("init Post",this.postContent.id);
-
+    this.removeCount = this.postContent.comment.length - 1 || 0
   }
 
   handleInput(event: any) {
@@ -55,6 +54,10 @@ export class PostCommentComponent implements OnInit {
   removeImg() {
     this.commentImg = ''
     this.cdf.detectChanges()
+  }
+
+  showAllComment(){
+    this.removeCount = 0
   }
 
 

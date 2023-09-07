@@ -1,0 +1,67 @@
+<div class="header">
+    <app-header></app-header>
+</div>
+
+
+<section id="userProfile">
+    <!-- Profile IMG -->
+    <div class="text-center mt-8">
+        <p-avatar image="{{loginUser?.profile_img || ''}}" styleClass="mr-2"
+            size="xlarge" shape="circle" (onImageError)="setDefaultImg()" ></p-avatar>
+        <h2>{{loginUser?.name}}</h2>
+    </div>
+
+
+    <div class="grid justify-content-center">
+        <div class="lg:col-6 md:col-8 ">
+            <p-card>
+                <i class="pi pi-cog setting-icon"></i>
+                <!-- <p class="m-0">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error
+                    repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam
+                    perferendis esse, cupiditate neque
+                    quas!
+                </p> -->
+                <div class="flex align-items-center gap-2 m-3">
+                    <i class="pi pi-envelope"></i>
+                    <label class="flex-auto">
+                        {{loginUser?.email}}
+                    </label>
+                </div>
+                <div class="flex align-items-center gap-2 m-3">
+                    <i class="pi pi-gift"></i>
+                    <label class="flex-auto">
+                        {{loginUser?.dob}}
+                    </label>
+                </div>
+                <div class="flex align-items-center gap-2 m-3">
+                    <i class="pi pi-map-marker"></i>
+                    <label class="flex-auto">
+                        Yangon/Myanmar
+                    </label>
+                </div>
+                <div class="flex align-items-center gap-2 m-3">
+                    <i class="pi pi-briefcase"></i>
+                    <label class="flex-auto">
+                        {{loginUser?.bio}}
+                    </label>
+                </div>
+            </p-card>
+        </div>
+    </div>
+
+    <article>
+        <div class="grid justify-content-center">
+            <div class="col-6">
+                <p-card>
+                    <div class="grid">
+                        <div class="col-4" *ngFor="let item of userPost">
+                            <p-image [src]="item.imgs[0]" styleClass="w-full" width="100%"></p-image>
+                        </div>
+                    </div>
+                </p-card>
+            </div>
+        </div>
+    </article>
+
+</section>

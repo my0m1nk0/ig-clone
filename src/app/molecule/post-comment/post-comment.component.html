@@ -16,12 +16,15 @@
             </div>
         </div>
         <div class="text-right mb-2">
-            <a href="javascript:void(0)" class="no-underline text-color">
+            <a href="javascript:void(0)" *ngIf="removeCount > 0" class="no-underline text-color"
+                (click)="showAllComment()">
                 See More Commnet
             </a>
         </div>
         <div class="comment-list">
-            <app-comment-item *ngFor="let comment of postContent.comment" [postComment]="comment" ></app-comment-item>
+            <!-- {{postContent.comment }} -->
+            <app-comment-item *ngFor="let comment of postContent.comment | slicePipe : removeCount"
+                [postComment]="comment"></app-comment-item>
         </div>
     </ng-container>
 </app-post-item>

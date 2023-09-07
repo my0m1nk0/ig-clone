@@ -10,3 +10,12 @@ export interface User {
     profile_img?: string,
     friends: string[]
 }
+
+// Need to Update
+// name: string,
+// email: string,
+// dob: string,
+// about?: string,
+// bio?: string,
+// cover_img?: string,
+// profile_img?: string,

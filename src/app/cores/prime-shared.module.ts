@@ -14,6 +14,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ImageModule } from 'primeng/image';
 import { CheckReactPipe } from './pipes/check-react.pipe';
 import { GalleriaModule } from 'primeng/galleria';
+import { SlicePipe } from './pipes/slice.pipe';
 const modules: any[] = [
   InputTextModule,
   ButtonModule,
@@ -31,10 +32,11 @@ const modules: any[] = [
 ]
 @NgModule({
   imports: modules,
-  exports: [...modules, SeeMoreDirective,CheckReactPipe],
+  exports: [...modules, SeeMoreDirective,CheckReactPipe,SlicePipe],
   declarations: [
     SeeMoreDirective,
     CheckReactPipe,
+    SlicePipe,
   ],
 })
 export class SharePrimeModule {

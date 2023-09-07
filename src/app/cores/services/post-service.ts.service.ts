@@ -1,4 +1,4 @@
-import {Injectable, inject} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
     CollectionReference,
     DocumentData,
@@ -7,12 +7,15 @@ import {
     collection,
     collectionData,
     doc,
-    updateDoc
+    getDocs,
+    query,
+    updateDoc,
+    where
 } from '@angular/fire/firestore';
-import {forkJoin, from, map, mergeMap, toArray} from 'rxjs';
-import {PostComment, PostI} from 'src/app/models/post';
-import {dataConverter} from '../data-converter';
-import {FireStoreUserService} from './fire-store-user.service';
+import { forkJoin, from, map, mergeMap, toArray } from 'rxjs';
+import { PostComment, PostI } from 'src/app/models/post';
+import { dataConverter } from '../data-converter';
+import { FireStoreUserService } from './fire-store-user.service';
 
 @Injectable({
     providedIn: 'root'
@@ -26,7 +29,7 @@ export class PostServiceTsService {
     }
 
     addNewPost(postForm: PostI) {
-        return from(addDoc(this.postsCollection, {...postForm, user_id: this.userService.loginUser.getValue()?.id}));
+        return from(addDoc(this.postsCollection, { ...postForm, user_id: this.userService.loginUser.getValue()?.id }));
     }
 
     getPosts() {
@@ -34,7 +37,7 @@ export class PostServiceTsService {
             return from(res).pipe(mergeMap((post: any) => {
                 post.comment = post.comment ?? []
                 return forkJoin([this.userService.getUserById(post.user_id), ...post.comment.map((comment: any) => {
-                    return this.userService.getUserById(comment.user_id).pipe(map((cmtUser) => ({...comment, user: cmtUser?.data()})))
+                    return this.userService.getUserById(comment.user_id).pipe(map((cmtUser) => ({ ...comment, user: cmtUser?.data() })))
                 })]).pipe(map((result: any) => {
                     post['user'] = result[0].data()
                     result.splice(0, 1)
@@ -48,6 +51,12 @@ export class PostServiceTsService {
                 // pipe(map((user) => ({ ...post, user: user?.data() })))
             }), toArray())
         }))
+    }
+
+    getPostsByUser(userId: string) {
+        // return from(getDocs(doc(this.firestore,'posts',)))
+        const filterQuery = query(this.postsCollection, where('user_id', '==', userId))
+        return from(getDocs(filterQuery)).pipe(map((result) => result.docs.map((res) => res.data())))
     }
 
     likePosts(post: PostI) {
@@ -69,7 +78,7 @@ export class PostServiceTsService {
     }
 
     updatePosts(post: PostI) {
-        return from(updateDoc(doc(this.firestore, 'posts', post.id), {...post}))
+        return from(updateDoc(doc(this.firestore, 'posts', post.id), { ...post }))
     }
 
 
