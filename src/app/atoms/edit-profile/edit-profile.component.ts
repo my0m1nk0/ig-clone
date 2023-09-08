@@ -1,8 +1,7 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import dayjs from 'dayjs';
 import { MessageService } from 'primeng/api';
-import { Calendar } from 'primeng/calendar';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { getFileReader } from 'src/app/cores/services/file-reader';
 import { FireStoreUserService } from 'src/app/cores/services/fire-store-user.service';
@@ -17,7 +16,7 @@ export class EditProfileComponent implements OnInit {
   loginUser: User | null;
   profileImg: string | undefined;
   coverImg: string | undefined = 'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?w=2000';
-  // @ViewChild('calendar') calendar: Calendar; 
+  // @ViewChild('calendar') calendar: Calendar;
   updateProfileForm: FormGroup;
   @ViewChild("imageInput", { read: ElementRef }) imageInput: ElementRef
   @ViewChild("coverInput", { read: ElementRef }) coverInput: ElementRef
