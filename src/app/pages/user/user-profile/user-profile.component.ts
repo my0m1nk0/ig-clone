@@ -21,7 +21,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.loginUser = this.userService.loginUser.getValue()
     if (this.loginUser){
-      this.loginUser.profile_img = this.loginUser.profile_img ?? 'https://primefaces/cdn/primeng/images/demo/avatar/amyelsner.png'
+      this.loginUser.profile_img = this.loginUser.profile_img ?? 'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'
       this.postService.getPostsByUser(this.loginUser.id).subscribe((res: any[]) => {
         this.userPost = res
       })

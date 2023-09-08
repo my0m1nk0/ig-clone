@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { MoleculeModule } from 'src/app/molecule/molecule.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { authUserGuard } from 'src/app/auths/auth-user.guard';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    component: UserProfileComponent
+    component: UserProfileComponent,
+    canActivate: [authUserGuard],
   }
 ]
 

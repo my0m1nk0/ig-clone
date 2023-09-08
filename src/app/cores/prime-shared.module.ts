@@ -15,6 +15,8 @@ import { ImageModule } from 'primeng/image';
 import { CheckReactPipe } from './pipes/check-react.pipe';
 import { GalleriaModule } from 'primeng/galleria';
 import { SlicePipe } from './pipes/slice.pipe';
+import { MenuModule } from 'primeng/menu';
+
 const modules: any[] = [
   InputTextModule,
   ButtonModule,
@@ -28,7 +30,8 @@ const modules: any[] = [
   VirtualScrollerModule,
   InputTextareaModule,
   ImageModule,
-  GalleriaModule
+  GalleriaModule,
+  MenuModule
 ]
 @NgModule({
   imports: modules,

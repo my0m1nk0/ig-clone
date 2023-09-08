@@ -21,6 +21,13 @@
 .ui-datepicker {
   width: 200px;
 }
+.cover-icon{
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  color: #fff;
+  cursor: pointer;
+}
 ::ng-deep #dob {
   .p-calendar .p-datepicker {
     z-index: 12102;

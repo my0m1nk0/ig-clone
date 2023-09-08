@@ -46,6 +46,11 @@ export class FireStoreUserService {
 
   }
 
+  logOut() {
+    this.loginUser.next(null)
+    localStorage.removeItem("user")
+  }
+
   checkEmail(userInfo: User) {
     const isExist = this.item$.getValue().some((user) => user.email === userInfo.email)
     return isExist
@@ -58,8 +63,10 @@ export class FireStoreUserService {
     return of(null)
   }
 
-  updateUser(user : User){
-    const userInfo = JSON.parse(localStorage.getItem("user")!);
-      return from(updateDoc(doc(this.firestore, 'user' , userInfo.id),{...user}))
+  updateUser(user: User) {
+    const userValue = this.loginUser.getValue()
+    console.log(userValue, "value");
+    this.loginUser.next({ ...userValue, ...user })
+    return from(updateDoc(doc(this.firestore, 'user', userValue?.id || ''), { ...user }))
   }
 }

@@ -10,6 +10,7 @@ import { AtomModule } from '../atoms/atom.module';
 import { PostCommentComponent } from './post-comment/post-comment.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from "@angular/platform-browser";
+import { RouterModule } from '@angular/router';
 
 
 const COMPONENTS = [
@@ -28,6 +29,7 @@ const COMPONENTS = [
     imports: [
         CommonModule,
         AtomModule,
+        RouterModule,
         SharePrimeModule,
         FormsModule,
         ReactiveFormsModule,

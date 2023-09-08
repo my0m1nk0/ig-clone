@@ -1,10 +1,13 @@
 <nav class="surface-section py-3 px-6 shadow-2 flex align-items-center justify-content-between relative lg:static border-bottom-1 surface-border"
     style="min-height: 84px">
-    <img src="assets/imgs/bastion-700.svg" alt="Image" height="40" class="mr-0 lg:mr-6" /><a pripple=""
-        pstyleclass="@next" enterclass="hidden" leavetoclass="hidden"
-        class="p-ripple p-element cursor-pointer block lg:hidden text-600">
-        <i class="pi pi-bars text-4xl"></i>
-        <span class="p-ink"></span>
+    <a [routerLink]="['/']">
+
+        <img src="assets/imgs/bastion-700.svg" alt="Image" height="40" class="mr-0 lg:mr-6" />
+        <a pripple="" pstyleclass="@next" enterclass="hidden" leavetoclass="hidden"
+            class="p-ripple p-element cursor-pointer block lg:hidden text-600">
+            <i class="pi pi-bars text-4xl"></i>
+            <span class="p-ink"></span>
+        </a>
     </a>
     <div
         class="align-items-center flex-grow-1 hidden lg:flex absolute lg:static w-full surface-section left-0 top-100 z-1 shadow-2 lg:shadow-none border-1 lg:border-none surface-border justify-content-end">
@@ -19,11 +22,14 @@
                     class="nav-icon"></p-button>
             </li>
             <li>
-                <p-avatar *ngIf="user?.profile_img;else profileIcon" image="{{user?.profile_img}}"
-                    shape="circle"></p-avatar>
-                <ng-template #profileIcon>
-                    <p-avatar icon="pi pi-user"  shape="circle"></p-avatar>
-                </ng-template>
+                <!-- <a [routerLink]="['/user/profile']"> -->
+                    <p-avatar (click)="menu.toggle($event)" *ngIf="user?.profile_img;else profileIcon" image="{{user?.profile_img}}"
+                        shape="circle"></p-avatar>
+                    <ng-template #profileIcon>
+                        <p-avatar (click)="menu.toggle($event)" icon="pi pi-user" shape="circle"></p-avatar>
+                    </ng-template>
+                <!-- </a> -->
+                <p-menu #menu [model]="menuItems" [popup]="true"></p-menu>
             </li>
         </ul>
 

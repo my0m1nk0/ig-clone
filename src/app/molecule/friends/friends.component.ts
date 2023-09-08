@@ -1,28 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FireStoreUserService } from 'src/app/cores/services/fire-store-user.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-friends',
   templateUrl: './friends.component.html',
   styleUrls: ['./friends.component.scss']
 })
-export class FriendsComponent {
-  products = [
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'INSTOCK',
-      rating: 5
-    },
-  ]
+export class FriendsComponent implements OnInit {
+  friends: User[] = []
 
-  constructor() { }
+  constructor(private userService: FireStoreUserService) { }
 
+  ngOnInit(): void {
+    this.userService.item$.subscribe((res) => {
+      this.friends = res
+    })
+  }
   getSeverity(status: string) {
     switch (status) {
       case 'INSTOCK':
@@ -33,6 +27,10 @@ export class FriendsComponent {
         return 'danger';
     }
     return 'danger'
+  }
+
+  defImg(user: User) {
+    user.profile_img = "https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
   }
 
 }
