@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { CollectionReference, DocumentData, Firestore, QueryDocumentSnapshot, addDoc, collection, collectionData, doc, getDoc } from '@angular/fire/firestore';
+import { CollectionReference, DocumentData, Firestore, QueryDocumentSnapshot, addDoc, collection, collectionData, doc, getDoc, updateDoc } from '@angular/fire/firestore';
 import { Observable, from, of, BehaviorSubject, map } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from '../../models/user'
@@ -56,5 +56,10 @@ export class FireStoreUserService {
     if (typeof id == 'string')
       return from(getDoc(doc(this.firestore, 'user', id)))
     return of(null)
+  }
+
+  updateUser(user : User){
+    const userInfo = JSON.parse(localStorage.getItem("user")!);
+      return from(updateDoc(doc(this.firestore, 'user' , userInfo.id),{...user}))
   }
 }

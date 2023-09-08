@@ -12,10 +12,10 @@ export interface User {
 }
 
 // Need to Update
-// name: string,
-// email: string,
-// dob: string,
-// about?: string,
-// bio?: string,
+// name: string,/
+// email: string,/
+// dob: string, /
+// about?: string,/
+// bio?: string,/
 // cover_img?: string,
-// profile_img?: string,
+// profile_img?: string,/

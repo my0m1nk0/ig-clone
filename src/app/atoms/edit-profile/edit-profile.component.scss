@@ -1,0 +1,43 @@
+::ng-deep #edit-profile {
+  .p-avatar.p-avatar-xl {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+#edit-profile{
+  height: 200px;
+  position: relative;
+  width: 100%;
+}
+.profile_img{
+  position: absolute;
+  top: 50%;
+  left: 40%;
+}
+.p-inputtext {
+  width: 100%;
+}
+
+.ui-datepicker {
+  width: 200px;
+}
+::ng-deep #dob {
+  .p-calendar .p-datepicker {
+    z-index: 12102;
+    transform-origin: center bottom;
+    top: -271px;
+    left: 130px;
+    min-width: 50%;
+  }
+  .p-datepicker table td {
+    padding: 0.2rem;
+  }
+  .p-datepicker table td > span {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+.cover-img{
+  width: 100%;
+  height: 200px;
+}

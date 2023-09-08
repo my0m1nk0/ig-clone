@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CommentItemComponent } from './comment-item/comment-item.component';
 import {StoryCreateComponent} from "./story-create/story-create.component";
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 const COMPONETS = [
@@ -19,7 +20,7 @@ const COMPONETS = [
   PostCreateFormComponent,
   CommentItemComponent,
   StoryCreateComponent,
-
+  EditProfileComponent
 ]
 
 @NgModule({
